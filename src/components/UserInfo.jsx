@@ -5,12 +5,14 @@ import { LogoutButton } from "./LogoutButton";
 export async function UserInfo() {
   const session = await auth();
 
+  const userName = session?.user?.name;
+
   return (
     <div>
       {session ? (
         <div>
           {session.user.name}{" "}
-          <span className="text-xs text-zinc-400 mr-3">#{session.user.id}</span>
+          <span className="text-xs text-zinc-400 mr-3">{userName}</span>
           <LogoutButton />
         </div>
       ) : (
